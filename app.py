@@ -12,6 +12,6 @@ def Users(user):
     return f"Olá, {user}"
 
 
-@app.route("/<a>")
+@app.route("/mostrar-letra/<a>")
 def Test(a):
     return f"<p>{str(a)*9999}</p>"
