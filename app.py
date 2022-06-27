@@ -9,7 +9,7 @@ def Index():
 
 @app.route("/<user>")
 def Users(user):
-    return f"Olá, {user}"
+    return f"<h1>Olá, {user}</h1>"
 
 
 @app.route("/mostrar-letra/<a>")
