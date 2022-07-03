@@ -4,14 +4,15 @@ import base64
 import tempfile
 from time import sleep
 import os
+from flask-cors import CORS
 
-# coded_string = '''Q5YACgA...'''
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def Index():
-    return "<h1>Olá, mundo!</h1>"
+    return "<h1 style='color:blue;'>Olá, mundo2!</h1>"
 
 
 @app.route("/<user>")
