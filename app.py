@@ -33,7 +33,7 @@ def Test():
 
 @app.route("/verificar-cadastro")
 def verificarCadastro():
-    return str([x for x in os.walk("./tmp")])
+    return str([x for x in os.walk("tmp")])
 
 
 @app.post("/fazer-cadastro") # {"accountName":"","AppKey":"","AppToken":"","excel":""}
