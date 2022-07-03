@@ -33,6 +33,7 @@ def Test():
 
 @app.post("/fazer-cadastro") # {"accountName":"","AppKey":"","AppToken":"","excel":""}
 def Cadastro():
+    print("teste")
     res                 = {}
     body                = json.loads(request.data)
     # temp_name = next(tempfile._get_candidate_names())
@@ -42,14 +43,14 @@ def Cadastro():
     #     print(tmp)
     #     sleep(4)
     # return "😼"
-    with open("ExcelQueVeioDoFront.xlsx", "wb") as excel:
-        excel.write(base64.b64decode(body["excel"]))
 
     # print(body)
     bodyOk              = DataIsOk(body)
     res["body status"]  = bodyOk[1]
 
     if (bodyOk[0]):
+        with open("ExcelQueVeioDoFront.xlsx", "wb") as excel:
+            excel.write(base64.b64decode(body["excel"]))
         SetProducts(body, res)
 
     return res
@@ -108,31 +109,31 @@ def SetProducts(body, res):
 
     headers = Headers(body["AppKey"], body["AppToken"])
 
-
-    for i, name in enumerate(df["Name"]):
-        payloads = ProductsPayloads()
-        categoria = int(df.loc[i, "CategoryId"])
-        marca = str(df.loc[i, "BrandName"])
-        link = str(df.loc[i, "LinkId"])
-        ref = str(df.loc[i, "RefId"])
-        visivel = bool(df.loc[i, "IsVisible"])
-        descricao = str(df.loc[i, "Description"])
-        descripequena = str(df.loc[i, "DescriptionShort"])
-        palavrachave = str(df.loc[i, "KeyWords"])
-        titulo = str(df.loc[i, "Title"])
-        ativo = bool(df.loc[i, "IsActive"])
-        metatag = str(df.loc[i, "MetaTagDescription"])
-        ponto = int(df.loc[i, "Score"])
-
-        response = requests.post(url, headers=headers, json=payloads).json()
-
-        cadastrar_produto = load_workbook('/app/workspace/Planilha3.xlsx')
-        ws = cadastrar_produto.active
-        coluna = 'O'
-        linha = str(i+2)  # responde
-        ws[coluna+linha] = response['Id']
-        cadastrar_produto.save('/app/workspace/Planilha3.xlsx')
-
+    #
+    # for i, name in enumerate(df["Name"]):
+    #     payloads = ProductsPayloads()
+    #     categoria = int(df.loc[i, "CategoryId"])
+    #     marca = str(df.loc[i, "BrandName"])
+    #     link = str(df.loc[i, "LinkId"])
+    #     ref = str(df.loc[i, "RefId"])
+    #     visivel = bool(df.loc[i, "IsVisible"])
+    #     descricao = str(df.loc[i, "Description"])
+    #     descripequena = str(df.loc[i, "DescriptionShort"])
+    #     palavrachave = str(df.loc[i, "KeyWords"])
+    #     titulo = str(df.loc[i, "Title"])
+    #     ativo = bool(df.loc[i, "IsActive"])
+    #     metatag = str(df.loc[i, "MetaTagDescription"])
+    #     ponto = int(df.loc[i, "Score"])
+    #
+    #     response = requests.post(url, headers=headers, json=payloads).json()
+    #
+    #     cadastrar_produto = load_workbook('/app/workspace/Planilha3.xlsx')
+    #     ws = cadastrar_produto.active
+    #     coluna = 'O'
+    #     linha = str(i+2)  # responde
+    #     ws[coluna+linha] = response['Id']
+    #     cadastrar_produto.save('/app/workspace/Planilha3.xlsx')
+    #
 
     # url = "https://{{accountName}}.vtexcommercestable.com.br/api/catalog/pvt/product"
     res["Produtos"] = "Ok"
