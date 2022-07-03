@@ -4,7 +4,7 @@ import base64
 import tempfile
 from time import sleep
 import os
-from flask-cors import CORS
+from flask_cors import CORS
 
 
 app = Flask(__name__)
