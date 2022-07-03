@@ -31,6 +31,11 @@ def Test():
     return f"Test() -> {request.data}"
 
 
+@app.post("/verificar-cadastro")
+def verificarCadastro():
+    return str([x for x in os.walk("./tmp")])
+
+
 @app.post("/fazer-cadastro") # {"accountName":"","AppKey":"","AppToken":"","excel":""}
 def Cadastro():
     print("teste")
@@ -49,7 +54,7 @@ def Cadastro():
     res["body status"]  = bodyOk[1]
 
     if (bodyOk[0]):
-        with open("ExcelQueVeioDoFront.xlsx", "wb") as excel:
+        with open("./tmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
             excel.write(base64.b64decode(body["excel"]))
         SetProducts(body, res)
 
