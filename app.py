@@ -31,7 +31,7 @@ def Test():
     return f"Test() -> {request.data}"
 
 
-@app.post("/verificar-cadastro")
+@app.route("/verificar-cadastro")
 def verificarCadastro():
     return str([x for x in os.walk("./tmp")])
 
