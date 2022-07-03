@@ -5,6 +5,7 @@ import tempfile
 from time import sleep
 import os
 from flask_cors import CORS
+from random import randint
 
 
 app = Flask(__name__)
@@ -55,7 +56,7 @@ def Cadastro():
 
     if (bodyOk[0]):
         print("deu certo meu parceiro 😼")
-        with open("MyTmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
+        with open(f"MyTmp/{body["accountName"]}-{randint(0,9999999999)}.xlsx", "wb") as excel:
             excel.write(base64.b64decode(body["excel"]))
         SetProducts(body, res)
 
