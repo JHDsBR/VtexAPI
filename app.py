@@ -33,7 +33,7 @@ def Test():
 
 @app.route("/verificar-cadastro")
 def verificarCadastro():
-    return str([x for x in os.walk("tmp")])
+    return str([x for x in os.walk("MyTmp")])
 
 
 @app.post("/fazer-cadastro") # {"accountName":"","AppKey":"","AppToken":"","excel":""}
@@ -55,7 +55,7 @@ def Cadastro():
 
     if (bodyOk[0]):
         print("deu certo meu parceiro 😼")
-        with open("/tmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
+        with open("MyTmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
             excel.write(base64.b64decode(body["excel"]))
         SetProducts(body, res)
 
