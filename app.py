@@ -54,7 +54,8 @@ def Cadastro():
     res["body status"]  = bodyOk[1]
 
     if (bodyOk[0]):
-        with open("tmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
+        print("deu certo meu parceiro 😼")
+        with open("/tmp/ExcelQueVeioDoFront.xlsx", "wb") as excel:
             excel.write(base64.b64decode(body["excel"]))
         SetProducts(body, res)
 
