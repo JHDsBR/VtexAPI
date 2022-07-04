@@ -39,9 +39,11 @@ def verificarCadastro():
 
 @app.post("/fazer-cadastro") # {"accountName":"","AppKey":"","AppToken":"","excel":""}
 def Cadastro():
-    print("teste")
     res                 = {}
     body                = json.loads(request.data)
+    print()
+    print(body)
+    print()
     # temp_name = next(tempfile._get_candidate_names())
     # with tempfile.TemporaryDirectory() as tmp:
     #     path = os.path.join(tmp, 'something')
