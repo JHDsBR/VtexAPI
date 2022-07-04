@@ -13,7 +13,7 @@ CORS(app)
 
 @app.route("/")
 def Index():
-    return "<h1 style='color:blue;'>Olá, mundo2!</h1>"
+    return "Está ONLINE"
 
 
 @app.route("/<user>")
